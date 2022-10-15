@@ -1,19 +1,19 @@
 ﻿class Program
 {
-    static void getChange(double m, double p)
-    {
+    static void getChange(double m, double p) // error handling when M is too low
+    {                                         // and moving on to another method to calculate the actual change
         if (m < p)
         {
             throw new ArithmeticException("insufficient funds.");
         }
         else calcChange(m, p);
     }
-    static void calcChange(double m, double p)
+    static void calcChange(double m, double p) // calculating the actual change
     {
         double change = Math.Round(m - p, 3);
         int[] changeArr = { 0, 0, 0, 0, 0, 0 };
 
-        System.Console.WriteLine(Math.Round(change, 3));
+        System.Console.WriteLine("Change will be: " + Math.Round(change, 3) + ", and the machine outputs:");
 
         if (change >= 1)
         {
@@ -47,7 +47,7 @@
 
 
 
-        void printArr(int[] arr)
+        void printArr(int[] arr) // method within calc to print the output array
         {
             System.Console.Write("[");
             for (int i = 0; i < arr.Length - 1; i++)
@@ -67,5 +67,9 @@
         getChange(3, 0.01); // should return [4,0,2,1,1,2] 
         getChange(4, 3.14); // should return [1,0,1,1,1,0] 
         getChange(0.45, 0.34); // should return [1,0,1,0,0,0]
+        getChange(99,1.56); // should return [4,1,1,1,0,97]
     }
 }
+
+
+// end of misery
