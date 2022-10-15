@@ -30,22 +30,21 @@
             changeArr[3] = 1;
             change = Math.Round(change - 0.25, 3);
         }
-        System.Console.WriteLine($"After 0.25: {change}");
-        // if (change >= 0.1)
-        // {
-        //     changeArr[2] = (int)Math.Floor(change * 10);
-        //     change -= (Math.Floor(change * 10) / 10);
-        // }
-        // if (change >= 0.05)
-        // {
-        //     changeArr[1] = 1;
-        //     change -= 0.05;
-        // }
-        // if (change >= 0.01)
-        // {
-        //     change = Math.Ceiling(change);
-        // }
-        // System.Console.WriteLine(change);
+        if (change >= 0.1)
+        {
+            changeArr[2] = Convert.ToInt32(Math.Floor(change * 10));
+            change = Math.Round(change - Math.Floor(change * 10) / 10, 3);
+        }
+        if (change >= 0.05)
+        {
+            changeArr[1] = 1;
+            change = Math.Round(change - 0.05, 3);
+        }
+        if (change >= 0.01)
+        {
+            changeArr[0] = Convert.ToInt32(change*100);
+        }
+
 
 
         void printArr(int[] arr)
